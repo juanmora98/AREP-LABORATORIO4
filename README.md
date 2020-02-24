@@ -15,6 +15,9 @@ Laboratorio realizado con la intención de que los estudiantes utilicen los los 
 # Pagina Heroku con data base
 https://frozen-journey-74293.herokuapp.com/editores
 
+# Pagina Heroku con Pojos
+https://frozen-journey-74293.herokuapp.com/api/inicial/saludoBienvenida
+
 # Como Iniciar
  # - Prerequisitos
    Para poder utilizar adecuadamente el programa es necesario tener en la computadora que lo utilizara, tener instalado:
