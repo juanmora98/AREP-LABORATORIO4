@@ -11,6 +11,11 @@ import edu.escuelaing.arep.app.servidor.Servidor;
  */
 public class Iniciador 
 {
+
+    /**
+     * Metodo iniciador de el servidor
+     * @param args
+     */
     public static void main( String[] args )
     {
         Servidor server = new Servidor(ManejadorAnotaciones.getPathClase());

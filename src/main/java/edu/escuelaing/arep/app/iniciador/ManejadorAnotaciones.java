@@ -16,6 +16,11 @@ import edu.escuelaing.arep.app.iniciador.Anotaciones.AnotacionWeb;
 
 public class ManejadorAnotaciones {
 
+
+    /**
+     * Metodo encargado de generar el path que sera utilizado para las busquedas de las anotaciones y asi mismo de la URL a buscar
+     * @return
+     */
     public static Map<String, Method> getPathClase() {
 
         List<Class> clasesServidor = new ArrayList<>();
@@ -29,6 +34,11 @@ public class ManejadorAnotaciones {
         return URLHandler;
     }
 
+
+    /**
+     * Metodo encargado de verificar las clases que utilizaran una anotacion especifica que se encuentren en el empaquetado especifico
+     * @param clasesServidor
+     */
     public static void VerificadorClasesUtiles(List<Class> clasesServidor) {
 
         Class[] listaClases;
@@ -49,6 +59,11 @@ public class ManejadorAnotaciones {
         }
     }
 
+    /**
+     * Metodo encargado de generar el path a utilizar en la URL
+     * @param clasesServidor
+     * @param URLHandler
+     */
     public static void GeneradorPath(List<Class> clasesServidor, Map<String, Method> URLHandler) {
         AnotacionServer anotacionServer;
         for (Class clase : clasesServidor) {
@@ -58,6 +73,13 @@ public class ManejadorAnotaciones {
     }
 
 
+
+    /**
+     * Metodo encargado de generar y obtener el URL solicitado
+     * @param clase
+     * @param anotacionServer
+     * @param URLHandler
+     */
     public static void ObtenerURL(Class clase, AnotacionServer anotacionServer, Map<String, Method> URLHandler){
         AnotacionWeb anotacionWeb;
         for (Method metodo : clase.getMethods()) {
@@ -68,7 +90,14 @@ public class ManejadorAnotaciones {
         }
     }
 
-    private static Class[] getClases(String direccion) throws ClassNotFoundException, IOException{
+    /**
+     * Metodo encargado de obtener las clases que solicita la direccion
+     * @param direccion
+     * @return
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
+    public static Class[] getClases(String direccion) throws ClassNotFoundException, IOException{
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         assert classLoader != null;
         String path = direccion.replace('.', '/');
@@ -85,7 +114,14 @@ public class ManejadorAnotaciones {
         return (Class[]) clases.toArray(new Class[clases.size()]);
     }
 
-    private static Collection EncontrarClases(File directorio, String direccion) throws ClassNotFoundException {
+    /**
+     * Metodo encargado de encontrar todas las clases que solicita la direccion
+     * @param directorio
+     * @param direccion
+     * @return
+     * @throws ClassNotFoundException
+     */
+    public static Collection EncontrarClases(File directorio, String direccion) throws ClassNotFoundException {
         List clases = new ArrayList();
 			if (!directorio.exists()) {
 					return clases;

@@ -199,6 +199,9 @@ public class Servidor {
         
     }
 
+    /**
+     * Metodo utilizado para mostrar una pagina web a partir de una path con extencion API y que tenga relacion con las anotaciones
+     */
     public void MostrarPaginaAPI(){
         Method metodo = mapeoURL.get(archivo.substring(archivo.indexOf("/"), archivo.length()-1));
       String respuesta = "";
