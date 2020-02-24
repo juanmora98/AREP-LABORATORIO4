@@ -26,10 +26,10 @@ https://frozen-journey-74293.herokuapp.com/api/inicial/saludoBienvenida
    * [java]
   
 # Diseño
-El pdf añadido de nombre [Laboratorio4]() se encuentra el diseño del proyecto.
+El pdf añadido de nombre [Lab4](https://github.com/juanmora98/AREP-LABORATORIO4/blob/master/lab4.pdf) se encuentra el diseño del proyecto.
 
 # JavaDoc
-[Documentacion](https://github.com/juanmora98/AREP-Laboratorio3-Reto1/tree/master/apidocs) al darle click, se abrira la carpeta donde se encuentra los archivos generados por el javadocs.
+[Documentacion](https://github.com/juanmora98/AREP-LABORATORIO4/tree/master/apidocs) al darle click, se abrira la carpeta donde se encuentra los archivos generados por el javadocs.
 
 ## Construido
 * [maven] - manejador de dependencias
