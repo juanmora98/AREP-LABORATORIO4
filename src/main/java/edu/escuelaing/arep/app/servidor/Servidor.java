@@ -84,11 +84,11 @@ public class Servidor {
                 MostrarPaginaDB();
             }
 
-            if (archivo.startsWith("api")){
+            else if (archivo.startsWith("api")){
                 MostrarPaginaAPI();
             }
             
-            if(!archivo.equals("/")){
+            else if(!archivo.equals("/")){
 
                 CreacionArchivo();
 
