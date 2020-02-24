@@ -16,20 +16,20 @@ import edu.escuelaing.arep.app.iniciador.Anotaciones.AnotacionWeb;
 
 public class ManejadorAnotaciones {
 
-    public Map<String, Method> getPathClase() {
+    public static Map<String, Method> getPathClase() {
 
         List<Class> clasesServidor = new ArrayList<>();
 
         VerificadorClasesUtiles(clasesServidor);
-        
+
         Map<String, Method> URLHandler = new HashMap<String, Method>();
-        
+
         GeneradorPath(clasesServidor, URLHandler);
 
         return URLHandler;
     }
 
-    public void VerificadorClasesUtiles(List<Class> clasesServidor){
+    public static void VerificadorClasesUtiles(List<Class> clasesServidor) {
 
         Class[] listaClases;
 
@@ -37,9 +37,9 @@ public class ManejadorAnotaciones {
 
             listaClases = getClases("edu.escuelaing.arep");
             for (Class clase : listaClases) {
-                if (clase.isAnnotationPresent(AnotacionServer.class)){
+                if (clase.isAnnotationPresent(AnotacionServer.class)) {
                     clasesServidor.add(clase);
-                }  
+                }
             }
 
         } catch (Exception e) {
@@ -49,7 +49,7 @@ public class ManejadorAnotaciones {
         }
     }
 
-    public void GeneradorPath(List<Class> clasesServidor, Map<String, Method> URLHandler){
+    public static void GeneradorPath(List<Class> clasesServidor, Map<String, Method> URLHandler) {
 
         AnotacionServer anotacionServer;
         AnotacionWeb anotacionWeb;

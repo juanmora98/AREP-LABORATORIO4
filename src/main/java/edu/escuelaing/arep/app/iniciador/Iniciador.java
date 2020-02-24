@@ -15,7 +15,7 @@ public class Iniciador
     {
         Servidor server = new Servidor(ManejadorAnotaciones.getPathClase());
         try {
-            server.start();
+            server.Start();
         } catch (IOException e) {
             e.printStackTrace();
         }

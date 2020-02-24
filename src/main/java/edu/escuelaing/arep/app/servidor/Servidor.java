@@ -1,9 +1,11 @@
 package edu.escuelaing.arep.app.servidor;
 
-
 import java.io.*;
+import java.lang.reflect.Method;
 import java.net.*;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import edu.escuelaing.arep.app.DB.DataBase;
 
@@ -29,12 +31,17 @@ public class Servidor {
 
     String tipoContenido;
 
+    private Map<String, Method> mapeoURL = new HashMap<String, Method>();
+
+    public Servidor(Map<String, Method> url){
+        this.mapeoURL = url;
+    }
 
     /**
-     * Metodo constructor del servidor en el cual se realizan las distintas conexiones necesarias para generar las paginas y las imagenes
+     * Metodo iniciador del servidor en el cual se realizan las distintas conexiones necesarias para generar las paginas y las imagenes
      * @throws IOException
      */
-    public Servidor() throws IOException{
+    public void Start() throws IOException{
 
         
         while(true){
@@ -319,8 +326,5 @@ public class Servidor {
      * @param args
      * @throws IOException
      */
-    public static void main(String[] args) throws IOException{
-        new Servidor();
-    }
 
 }
