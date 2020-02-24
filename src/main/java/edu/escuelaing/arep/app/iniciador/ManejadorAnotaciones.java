@@ -35,7 +35,7 @@ public class ManejadorAnotaciones {
 
         try {
 
-            listaClases = getClases("edu.escuelaing.arep.app");
+            listaClases = getClases("edu.escuelaing.arep");
             for (Class clase : listaClases) {
                 if (clase.isAnnotationPresent(AnotacionServer.class)) {
                     clasesServidor.add(clase);
