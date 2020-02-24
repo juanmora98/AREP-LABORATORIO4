@@ -50,17 +50,20 @@ public class ManejadorAnotaciones {
     }
 
     public static void GeneradorPath(List<Class> clasesServidor, Map<String, Method> URLHandler) {
-
         AnotacionServer anotacionServer;
-        AnotacionWeb anotacionWeb;
-
         for (Class clase : clasesServidor) {
             anotacionServer = (AnotacionServer) clase.getAnnotation(AnotacionServer.class);
-            for (Method metodo : clase.getMethods()) {
-                if (metodo.isAnnotationPresent(AnotacionWeb.class)) {
-                    anotacionWeb = (AnotacionWeb) metodo.getAnnotation(AnotacionWeb.class);
-                    URLHandler.put(anotacionServer.path() + anotacionWeb.path(), metodo);
-                }
+            ObtenerURL(clase, anotacionServer, URLHandler);
+        }
+    }
+
+
+    public static void ObtenerURL(Class clase, AnotacionServer anotacionServer, Map<String, Method> URLHandler){
+        AnotacionWeb anotacionWeb;
+        for (Method metodo : clase.getMethods()) {
+            if (metodo.isAnnotationPresent(AnotacionWeb.class)) {
+                anotacionWeb = (AnotacionWeb) metodo.getAnnotation(AnotacionWeb.class);
+                URLHandler.put(anotacionServer.path() + anotacionWeb.path(), metodo);
             }
         }
     }

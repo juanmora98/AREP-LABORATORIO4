@@ -1,6 +1,7 @@
 package edu.escuelaing.arep.app.servidor;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.*;
 import java.util.Date;
@@ -74,7 +75,7 @@ public class Servidor {
                 
             }
 
-            if(archivo.equals(" ") || archivo.equals("/")) {
+            if(archivo.equals(" ")) {
                 archivo = "index.html";
 
             }
@@ -83,6 +84,10 @@ public class Servidor {
                 MostrarPaginaDB();
             }
 
+            if (archivo.startsWith("api")){
+                MostrarPaginaAPI();
+            }
+            
             if(!archivo.equals("/")){
 
                 CreacionArchivo();
@@ -193,6 +198,38 @@ public class Servidor {
         br.close();
         
     }
+
+    public void MostrarPaginaAPI(){
+        Method metodo = mapeoURL.get(archivo.substring(archivo.indexOf("/"), archivo.length()-1));
+      String respuesta = "";
+      if (!metodo.equals(null)) {
+         try {
+            respuesta = (String) metodo.invoke(null);
+         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            e.printStackTrace();
+            respuesta = "<center><h1>No se puede encontrar el handler buscado</h1></center>";
+         }
+      }
+
+      String cadenaRespuesta = 
+         "HTTP/1.1 200 Ok\r\n" + 
+         "Content-type: " + "text/html" + "\r\n" + 
+         "Server: Java HTTP Server\r\n" + 
+         "Date: " + new Date() + "\r\n" + 
+         "\r\n" +
+         "<!DOCTYPE html>" + 
+            "<html>" + 
+            "<head>" + 
+            "<meta charset=\"UTF-8\">" + 
+            "<title>DataBase</title>\n" + 
+            "</head>" + 
+            "<body>" + 
+            respuesta +
+            "</body>" + 
+            "</html>";
+      printWriter.println(cadenaRespuesta);
+    } 
+
 
     /**
      * Metodo en el cual se genera una pagina en la cual se muestraque el tipo de archivo buscado no se encuentra en los recursos
@@ -321,10 +358,5 @@ public class Servidor {
            printWriter.println(outString);
      }
 
-    /**
-     * metodo para arrancar el servidor
-     * @param args
-     * @throws IOException
-     */
 
 }
