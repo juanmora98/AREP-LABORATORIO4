@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* edu.escuelaing.arep.iniciador.Iniciador
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* edu.escuelaing.arep.app.iniciador.Iniciador
